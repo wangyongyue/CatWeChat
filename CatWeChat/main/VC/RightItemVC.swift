@@ -10,10 +10,8 @@ import UIKit
 
 class RightItemVC: CViewController {
 
-    var obArray = Observe()
-    var obIndex = Observe()
-    var obRightItem = Observe()
-    var m:Operation?
+   
+    var m:RightItemListenr?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,16 +21,14 @@ class RightItemVC: CViewController {
         
         let style = Style().text("add").textColor(UIColor.black).backgroundColor(UIColor.clear)
         let rightButton = CButton(style)
+       
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: rightButton)
-        rightButton.v_on(ob: obRightItem)
-        
         
         
         
         let table = CTable()
         self.view.addSubview(table)
         
-        table.v_array(ob: obArray)
         table.register([ListCell.classForCoder(),
                         DetailsCell.classForCoder(),
                         LeftCell.classForCoder(),
@@ -46,19 +42,23 @@ class RightItemVC: CViewController {
             
         }
         
-        self.m?.loadData(ob: self.obArray)
         
-        table.v_index(ob: obIndex)
         
-        //
-        //        table.v_didEvent { (model) in
-        //
-        ////            let a = model as! MainModel
-        ////            a.eventPraise.v_on {
-        ////                print(a.name)
-        ////
-        ////            }
-        //        }
+        if let ob = m?.obArray{
+            table.v_array(ob: ob)
+
+        }
+        if let ob = m?.obIndex{
+            table.v_index(ob: ob)
+
+        }
+        if let ob = m?.obRightItem{
+            rightButton.v_on(ob: ob)
+
+        }
+      
+        m?.startListen()
+
         
         
     }
@@ -86,4 +86,13 @@ class RightItemVC: CViewController {
         }
         
     }
+}
+class RightItemListenr:Operation {
+    
+    var obArray = Observe()
+    var obIndex = Observe()
+    var obRightItem = Observe()
+    
+    func startListen(){}
+    
 }

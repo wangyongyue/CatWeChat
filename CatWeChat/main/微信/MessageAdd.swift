@@ -8,22 +8,30 @@
 
 import UIKit
 
-class MessageAdd: Operation {
+class MessageAdd: DetailsListenr {
     override func getViewController() -> UIViewController {
         
         let vc = DetailsVC()
         vc.m = self
         vc.navigationItem.title = "添加"
         
-        vc.obIndex.v_index { (index) in
-            
-            print(index)
-        }
         return vc
         
     }
-    override func loadData(ob:Observe) {
+    override func startListen(){
         
+        loadData()
+        
+        obIndex.v_index(ob: { (index) in
+            
+            print(index)
+            
+        })
+        
+        
+    }
+    func loadData() {
+
         var array = Array<Cat>()
         for i in 1...3{
             
@@ -34,7 +42,7 @@ class MessageAdd: Operation {
         }
         
         
-        ob.v_array(true, v: { () -> Array<Cat>? in
+        obArray.v_array(true, v: { () -> Array<Cat>? in
             
             return array
         })

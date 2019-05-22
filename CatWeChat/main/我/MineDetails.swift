@@ -8,21 +8,31 @@
 
 import UIKit
 
-class MineDetails: Operation {
+class MineDetails: DetailsListenr {
     override func getViewController() -> UIViewController {
         
         let vc = DetailsVC()
         vc.m = self
         vc.navigationItem.title = "微信详情"
         
-        vc.obIndex.v_index { (index) in
-            
-            print(index)
-        }
+       
         return vc
         
     }
-    override func loadData(ob:Observe) {
+    override func startListen(){
+        
+        loadData()
+        
+        obIndex.v_index(ob: { (index) in
+            
+            print(index)
+
+        })
+        
+        
+        
+    }
+    func loadData() {
         
         var array = Array<Cat>()
         for i in 1...dataNum{
@@ -34,7 +44,7 @@ class MineDetails: Operation {
         }
         
         
-        ob.v_array(true, v: { () -> Array<Cat>? in
+        obArray.v_array(true, v: { () -> Array<Cat>? in
             
             return array
         })

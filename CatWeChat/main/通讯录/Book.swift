@@ -8,30 +8,38 @@
 
 import UIKit
 
-class Book: Operation {
+class Book: RightItemListenr {
     override func getViewController() -> UIViewController {
         
         
         let vc = RightItemVC()
         vc.m = self
         vc.navigationItem.title = "通讯录"
-        vc.obIndex.v_index { (index) in
-            
-            
-            Router.push(BookDetails().getViewController(), nil, nil)
-
-            
-        }
-        vc.obRightItem.v_on {
-            
-            Router.push(MessageAdd().getViewController(), nil, nil)
-
-        }
+       
         
         return vc
         
     }
-    override func loadData(ob:Observe) {
+    override func startListen(){
+        
+        loadData()
+        
+        obIndex.v_index(ob: { (index) in
+            
+            Router.push(MessageDetails().getViewController(), nil, nil)
+            
+        })
+        
+        
+        obRightItem.v_on {
+            Router.push(MessageAdd().getViewController(), nil, nil)
+        }
+        
+        
+        
+    }
+    
+    func loadData() {
         
         var array = Array<Cat>()
         for i in 1...dataNum{
@@ -43,7 +51,7 @@ class Book: Operation {
         }
         
         
-        ob.v_array(true, v: { () -> Array<Cat>? in
+        obArray.v_array(true, v: { () -> Array<Cat>? in
             
             return array
         })

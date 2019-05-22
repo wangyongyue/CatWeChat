@@ -10,9 +10,8 @@ import UIKit
 import SnapKit
 class DetailsVC: CViewController {
 
-    var obArray = Observe()
-    var obIndex = Observe()
-    var m:Operation?
+    
+    var m:DetailsListenr?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +24,7 @@ class DetailsVC: CViewController {
         let table = CTable()
         self.view.addSubview(table)
         
-        table.v_array(ob: obArray)
+       
         table.register([ListCell.classForCoder(),
                         DetailsCell.classForCoder(),
                         LeftCell.classForCoder(),
@@ -39,22 +38,24 @@ class DetailsVC: CViewController {
             
         }
       
-        self.m?.loadData(ob: self.obArray)
+        if let ob = m?.obArray{
+            table.v_array(ob: ob)
+            
+        }
+        if let ob = m?.obIndex{
+            table.v_index(ob: ob)
+
+        }
         
-        table.v_index(ob: obIndex)
-        
-        //
-        //        table.v_didEvent { (model) in
-        //
-        ////            let a = model as! MainModel
-        ////            a.eventPraise.v_on {
-        ////                print(a.name)
-        ////
-        ////            }
-        //        }
-        
-        
+        m?.startListen()
     }
     
+}
+class DetailsListenr:Operation {
+    
+    var obArray = Observe()
+    var obIndex = Observe()
+    
+    func startListen(){}
     
 }

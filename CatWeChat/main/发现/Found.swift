@@ -8,29 +8,29 @@
 
 import UIKit
 
-class Found: Operation {
+class Found: RightItemListenr {
     override func getViewController() -> UIViewController {
         
         
         let vc = RightItemVC()
         vc.m = self
         vc.navigationItem.title = "发现"
-        vc.obIndex.v_index { (index) in
-            
-            Router.push(FoundDetails().getViewController(), nil, nil)
-
-            
-        }
-        vc.obRightItem.v_on {
-            
-            Router.push(MessageAdd().getViewController(), nil, nil)
-
-        }
+       
         
         return vc
         
     }
-    override func loadData(ob:Observe) {
+    override func startListen(){
+        
+        loadData()
+        
+        obIndex.v_index(ob: { (index) in
+            
+            print(index)
+            
+        })
+    }
+    func loadData() {
         
         var array = Array<Cat>()
         for i in 1...dataNum{
@@ -42,7 +42,7 @@ class Found: Operation {
         }
         
         
-        ob.v_array(true, v: { () -> Array<Cat>? in
+        obArray.v_array(true, v: { () -> Array<Cat>? in
             
             return array
         })

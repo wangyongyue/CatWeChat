@@ -16,7 +16,6 @@
 		45BD7BEC227959B400562576 /* CatWeChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BD7BEB227959B400562576 /* CatWeChatUITests.swift */; };
 		45BD7C34227959C900562576 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BD7BFB227959C900562576 /* ListCell.swift */; };
 		45BD7C35227959C900562576 /* DetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BD7BFC227959C900562576 /* DetailsCell.swift */; };
-		45BD7C36227959C900562576 /* SubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BD7BFF227959C900562576 /* SubView.swift */; };
 		45BD7C38227959C900562576 /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BD7C01227959C900562576 /* DetailsVC.swift */; };
 		45BD7C3C227959C900562576 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BD7C07227959C900562576 /* Message.swift */; };
 		45BD7C3D227959C900562576 /* MessageDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BD7C08227959C900562576 /* MessageDetails.swift */; };
@@ -86,7 +85,6 @@
 		45BD7BED227959B400562576 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45BD7BFB227959C900562576 /* ListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		45BD7BFC227959C900562576 /* DetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsCell.swift; sourceTree = "<group>"; };
-		45BD7BFF227959C900562576 /* SubView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubView.swift; sourceTree = "<group>"; };
 		45BD7C01227959C900562576 /* DetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
 		45BD7C07227959C900562576 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		45BD7C08227959C900562576 /* MessageDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDetails.swift; sourceTree = "<group>"; };
@@ -262,19 +260,10 @@
 		45BD7BFD227959C900562576 /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				45BD7BFE227959C900562576 /* view */,
 				45BD7C01227959C900562576 /* DetailsVC.swift */,
 				45BD7C6022795F5800562576 /* RightItemVC.swift */,
 			);
 			path = VC;
-			sourceTree = "<group>";
-		};
-		45BD7BFE227959C900562576 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				45BD7BFF227959C900562576 /* SubView.swift */,
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		45BD7C0E227959C900562576 /* Cat */ = {
@@ -729,7 +718,6 @@
 				45BD7C3F227959C900562576 /* MineDetails.swift in Sources */,
 				45BD7C38227959C900562576 /* DetailsVC.swift in Sources */,
 				45BD7C3E227959C900562576 /* Operation.swift in Sources */,
-				45BD7C36227959C900562576 /* SubView.swift in Sources */,
 				45BD7C44227959C900562576 /* Observe.swift in Sources */,
 				45BD7C6322796A3F00562576 /* LeftCell.swift in Sources */,
 				45BD7C51227959C900562576 /* CCollection.swift in Sources */,

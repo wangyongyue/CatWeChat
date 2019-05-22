@@ -12,6 +12,5 @@ class Operation: NSObject {
 
     func getViewController() -> UIViewController{return UIViewController()}
     func getView() -> UIView{return UIView()}
-    func loadData(ob:Observe){}
     
 }
