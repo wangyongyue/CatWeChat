@@ -11,7 +11,7 @@ import UIKit
 class RightItemVC: CViewController {
 
    
-    var m:RightItemListenr?
+    var m:RightItemLProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,24 +42,20 @@ class RightItemVC: CViewController {
             
         }
         
-        
-        
         if let ob = m?.obArray{
             table.v_array(ob: ob)
 
         }
         if let ob = m?.obIndex{
             table.v_index(ob: ob)
-
+            
         }
         if let ob = m?.obRightItem{
             rightButton.v_on(ob: ob)
-
+            
         }
-      
-        m?.startListen()
 
-        
+        m?.startListen()
         
     }
     
@@ -87,12 +83,14 @@ class RightItemVC: CViewController {
         
     }
 }
-class RightItemListenr:Operation {
+protocol RightItemLProtocol {
     
-    var obArray = Observe()
-    var obIndex = Observe()
-    var obRightItem = Observe()
+    var obArray:Observe{get}
+    var obIndex:Observe{get}
+    var obRightItem:Observe{get}
+
+    func startListen()
     
-    func startListen(){}
+    
     
 }

@@ -8,35 +8,42 @@
 
 import UIKit
 
-class Message: RightItemListenr {
+class Message:Operation, RightItemLProtocol {
 
-    override func getViewController() -> UIViewController {
    
+    var obArray:Observe = Observe()
+    var obIndex:Observe = Observe()
+    var obRightItem = Observe()
+    
+    override func getViewController() -> UIViewController {
+        
         let vc = RightItemVC()
         vc.m = self
         vc.navigationItem.title = "信息列表"
-       
-
+        
+        
         return vc
         
     }
-    override func startListen(){
-        
+    
+    
+    func startListen(){
+
         loadData()
-        
+
         obIndex.v_index(ob: { (index) in
-            
+
             Router.push(MessageDetails().getViewController(), nil, nil)
 
         })
-        
-      
+
+
         obRightItem.v_on {
             Router.push(MessageAdd().getViewController(), nil, nil)
         }
-        
-        
-        
+
+
+
     }
     
     func loadData() {

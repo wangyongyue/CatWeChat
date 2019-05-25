@@ -8,8 +8,12 @@
 
 import UIKit
 
-class MessageDetails: DetailsListenr {
+class MessageDetails: Operation,DetailsProtocol {
 
+    var obArray:Observe = Observe()
+    var obIndex:Observe = Observe()
+    
+    
     override func getViewController() -> UIViewController {
 
         let vc = DetailsVC()
@@ -20,7 +24,7 @@ class MessageDetails: DetailsListenr {
         
     }
     
-    override func startListen(){
+    func startListen(){
         
         loadData()
         

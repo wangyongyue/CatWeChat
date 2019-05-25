@@ -11,7 +11,7 @@ import SnapKit
 class DetailsVC: CViewController {
 
     
-    var m:DetailsListenr?
+    var m:DetailsProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,11 +51,12 @@ class DetailsVC: CViewController {
     }
     
 }
-class DetailsListenr:Operation {
-    
-    var obArray = Observe()
-    var obIndex = Observe()
-    
-    func startListen(){}
-    
+
+protocol DetailsProtocol {
+
+    var obArray:Observe{get}
+    var obIndex:Observe{get}
+
+    func startListen()
+
 }

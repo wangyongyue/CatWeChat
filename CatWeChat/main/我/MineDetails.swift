@@ -8,7 +8,11 @@
 
 import UIKit
 
-class MineDetails: DetailsListenr {
+class MineDetails: Operation,DetailsProtocol {
+    
+    var obArray:Observe = Observe()
+    var obIndex:Observe = Observe()
+    
     override func getViewController() -> UIViewController {
         
         let vc = DetailsVC()
@@ -19,7 +23,7 @@ class MineDetails: DetailsListenr {
         return vc
         
     }
-    override func startListen(){
+    func startListen(){
         
         loadData()
         

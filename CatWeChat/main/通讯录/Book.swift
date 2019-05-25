@@ -8,7 +8,13 @@
 
 import UIKit
 
-class Book: RightItemListenr {
+class Book: Operation, RightItemLProtocol {
+    
+    
+    var obArray:Observe = Observe()
+    var obIndex:Observe = Observe()
+    var obRightItem = Observe()
+    
     override func getViewController() -> UIViewController {
         
         
@@ -20,7 +26,7 @@ class Book: RightItemListenr {
         return vc
         
     }
-    override func startListen(){
+    func startListen(){
         
         loadData()
         
