@@ -93,11 +93,6 @@ class CTable: UITableView ,UITableViewDataSource,UITableViewDelegate{
             self.array = ob.v_array
             self.reloadData()
             
-            if let arr = self.array{
-                for value in arr{
-                    self.evBlock?(value)
-                }
-            }
             
         }
         
@@ -111,13 +106,7 @@ class CTable: UITableView ,UITableViewDataSource,UITableViewDelegate{
         block = ob
         
     }
-    //v_didEvent
-    typealias eventBlock = (_ amodel:Cat) -> ()
-    var evBlock:eventBlock?
-    func v_didEvent(ob:@escaping eventBlock){
-       
-        evBlock = ob
-    }
+    
     
     //v-index
     var ob:Observe?
